@@ -45,10 +45,11 @@ main{max-width:1280px;margin:0 auto;padding:24px}
 .sheet .img{cursor:default;aspect-ratio:auto;min-height:320px}.info{padding:28px;display:flex;flex-direction:column;gap:8px}.info h2{margin:0;font-size:22px;font-weight:500}.info p{color:var(--mut);line-height:1.6;margin:4px 0 12px}
 .x{position:absolute;top:8px;right:12px;background:none;border:0;color:var(--fg);font-size:26px;cursor:pointer;z-index:2}
 @media(max-width:600px){.sheet{grid-template-columns:1fr}.sheet .img{min-height:240px}}
+#gt select{background:var(--bg);color:var(--fg);border:1px solid var(--line);padding:6px;font:12px Poppins;max-width:170px}#gt .goog-te-gadget{font-size:0}#gt .goog-logo-link{display:none}.goog-te-banner-frame{display:none!important}body{top:0!important}@media(max-width:600px){#gt{justify-self:center}}
 footer{text-align:center;color:var(--mut);font-size:11px;padding:30px 16px}
 </style></head><body>
 <div class="top"><b>FREE SHIPPING &amp; RETURNS</b> on selected partner store orders</div>
-<header><span></span><div class="brand">cosso.</div>
+<header><div id="gt" class="notranslate-wrap"></div><div class="brand notranslate">cosso.</div>
 <label class="search"><input id="q" type="search" placeholder="Search products" aria-label="Search products"></label></header>
 <div class="hero"><div><h1>Shop</h1><i></i><small>Home &rsaquo; Shop all products</small></div></div>
 <nav class="cats" id="cats" aria-label="Categories"></nav>
@@ -105,4 +106,9 @@ $('grid').onclick=e=>{const b=e.target.closest('.img');if(!b)return;const p=P.fi
 $('modal').onclick=e=>{if(e.target.id==='modal'||e.target.closest('.x'))close()};
 addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 fetch('products.json').then(r=>r.json()).then(d=>{P=d;init()}).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load products.json</div>'});
-</script></body></html>
+</script>
+<script>
+function gtInit(){new google.translate.TranslateElement({pageLanguage:'en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'gt')}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=gtInit" async></script>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cosso. Affiliate Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff;--fg:#151515;--mut:#777;--card:#f1f1f1;--line:#e6e6e6;--bar:#e4e4e4;--red:#e8484b;--teal:#35c0d2;--ali:#e62e04;--amz:#ff9900}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414;--fg:#f2f2f2;--mut:#9a9a9a;--card:#222;--line:#2e2e2e;--bar:#232323}}
+:root[data-theme="dark"]{--bg:#141414;--fg:#f2f2f2;--mut:#9a9a9a;--card:#222;--line:#2e2e2e;--bar:#232323}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Poppins,system-ui,sans-serif;font-size:14px}
+.top{text-align:center;font-size:11px;padding:8px;border-bottom:1px solid var(--line);color:var(--mut)}.top b{color:var(--red);font-weight:500;text-decoration:underline}
+header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 24px;gap:12px}
+.brand{font-size:28px;font-weight:600;letter-spacing:-1px}
+.search{justify-self:end;display:flex;align-items:center;border-bottom:1px solid var(--fg);width:min(260px,100%)}
+.search input{border:0;background:none;color:inherit;font:inherit;padding:6px 4px;width:100%;outline:0}
+.search:focus-within{border-color:var(--red)}
+.hero{position:relative;height:190px;display:grid;place-items:center;text-align:center;background:linear-gradient(#cfcfcf,#808080);color:#fff}
+.hero h1{margin:0;font-size:42px;font-weight:500}.hero small{opacity:.9}.hero i{display:block;width:30px;height:2px;background:var(--red);margin:8px auto}
+.cats{display:flex;overflow-x:auto;background:#7a7a7a;scrollbar-width:none}.cats button{flex:1 0 auto;min-width:110px;padding:14px 22px;border:0;border-right:1px solid #ffffff22;background:none;color:#ffffffcc;font:500 15px Poppins;cursor:pointer}
+.cats button.on{color:#fff;background:#00000040;box-shadow:inset 0 -3px var(--red)}.cats button:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.tools{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut);gap:10px;flex-wrap:wrap}
+select{background:none;border:0;color:inherit;font:inherit;cursor:pointer}
+main{max-width:1280px;margin:0 auto;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px 20px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}main{padding:14px}header{padding:14px;grid-template-columns:1fr}.brand{text-align:center}.search{justify-self:stretch}.hero h1{font-size:34px}}
+.card{display:flex;flex-direction:column}
+.img{position:relative;aspect-ratio:1/1.15;background:var(--card);overflow:hidden;cursor:pointer;border:0;padding:0;width:100%;display:block}
+.img img,.img .ph{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.img:hover img,.img:hover .ph{transform:scale(1.07)}
+.ph{display:grid;place-items:center;font-size:54px;font-weight:600;color:#fff}
+.badge{position:absolute;top:10px;right:0;padding:3px 10px;color:#fff;font-size:10px;font-weight:600;text-transform:uppercase;background:var(--red)}.badge.New{background:var(--teal)}.badge.Hot{background:#f08a24}
+.img .quick{position:absolute;left:0;right:0;bottom:0;padding:9px;background:var(--fg);color:var(--bg);text-align:center;font-size:12px;transform:translateY(100%);transition:transform .25s}
+.img:hover .quick,.img:focus-visible .quick{transform:none}
+.t{margin:12px 0 2px;font-weight:500;font-size:13px}.p{color:var(--mut);font-size:13px}.stars{color:var(--red);font-size:12px;letter-spacing:1px;margin:2px 0 10px}
+.btns{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+.btn{display:block;text-align:center;text-decoration:none;color:#fff;font-weight:500;font-size:12px;padding:9px 6px;border-radius:2px;border:0;cursor:pointer;font-family:inherit}
+.btn.ali{background:var(--ali)}.btn.amz{background:var(--amz);color:#111}.btn:hover{filter:brightness(.92)}.btn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.oos{text-align:center;font-size:12px;color:var(--mut);border:1px dashed var(--line);padding:8px}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:60px 0}
+.modal{position:fixed;inset:0;background:#000a;display:none;place-items:center;padding:16px;z-index:9}.modal.open{display:grid}
+.sheet{background:var(--bg);max-width:760px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative;animation:pop .2s}
+@keyframes pop{from{transform:scale(.96);opacity:0}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.sheet .img{cursor:default;aspect-ratio:auto;min-height:320px}.info{padding:28px;display:flex;flex-direction:column;gap:8px}.info h2{margin:0;font-size:22px;font-weight:500}.info p{color:var(--mut);line-height:1.6;margin:4px 0 12px}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;color:var(--fg);font-size:26px;cursor:pointer;z-index:2}
+@media(max-width:600px){.sheet{grid-template-columns:1fr}.sheet .img{min-height:240px}}
+footer{text-align:center;color:var(--mut);font-size:11px;padding:30px 16px}
+</style></head><body>
+<div class="top"><b>FREE SHIPPING &amp; RETURNS</b> on selected partner store orders</div>
+<header><span></span><div class="brand">cosso.</div>
+<label class="search"><input id="q" type="search" placeholder="Search products" aria-label="Search products"></label></header>
+<div class="hero"><div><h1>Shop</h1><i></i><small>Home &rsaquo; Shop all products</small></div></div>
+<nav class="cats" id="cats" aria-label="Categories"></nav>
+<div class="tools"><span id="count"></span>
+<select id="sort" aria-label="Sort"><option value="new">Sort by newness</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rate">Top rated</option></select></div>
+<main><div class="grid" id="grid"></div></main>
+<footer>As an affiliate we may earn a commission on purchases made through the links above, at no extra cost to you.</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details"><div class="sheet" id="sheet"></div></div>
+<script>
+/* Catalog is embedded for this hosted page. On your own site, replace with:
+   fetch('products.json').then(r=>r.json()).then(init) */
+let P=[];
+const $=id=>document.getElementById(id);
+const S={cat:'All',q:'',sort:'new'};
+const num=s=>parseFloat(String(s).replace(/[^0-9.]/g,''))||0;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safe=u=>/^https?:\/\//i.test((u||'').trim())?u.trim():'';
+const hue=s=>[...s].reduce((a,c)=>a+c.charCodeAt(0),0)*37%360;
+function media(p){
+  const ph=`<div class="ph" style="background:linear-gradient(135deg,hsl(${hue(p.title)} 35% 62%),hsl(${(hue(p.title)+40)%360} 40% 45%))">${esc(p.title[0])}</div>`;
+  const src=safe(p.image);
+  return src?`<img src="${esc(src)}" alt="${esc(p.title)}" loading="lazy" onerror="this.outerHTML=this.dataset.ph" data-ph='${ph.replace(/'/g,"&#39;")}'>`:ph;
+}
+function buttons(p){
+  const a=safe(p.aliexpressUrl),z=safe(p.amazonUrl),o=[];
+  if(a)o.push(`<a class="btn ali" href="${esc(a)}" target="_blank" rel="sponsored noopener noreferrer">Buy on AliExpress</a>`);
+  if(z)o.push(`<a class="btn amz" href="${esc(z)}" target="_blank" rel="sponsored noopener noreferrer">Buy on Amazon</a>`);
+  return o.length?o.join(''):'<div class="oos">Out of stock</div>';
+}
+const stars=r=>{const n=Math.round(r||5);return '\u2605'.repeat(n)+'\u2606'.repeat(5-n)};
+const badge=p=>p.badge?`<span class="badge ${esc(p.badge)}">${esc(p.badge)}</span>`:'';
+function render(){
+  let l=P.filter(p=>(S.cat==='All'||p.category===S.cat)&&(p.title+' '+p.category+' '+(p.description||'')).toLowerCase().includes(S.q));
+  if(S.sort==='lo')l.sort((a,b)=>num(a.price)-num(b.price));
+  if(S.sort==='hi')l.sort((a,b)=>num(b.price)-num(a.price));
+  if(S.sort==='rate')l.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  if(S.sort==='new')l.sort((a,b)=>num(b.id)-num(a.id));
+  $('count').textContent=`Showing ${l.length} of ${P.length} products`;
+  $('grid').innerHTML=l.length?l.map(p=>`<article class="card"><button class="img" data-id="${esc(p.id)}" aria-label="View ${esc(p.title)}">${media(p)}${badge(p)}<span class="quick">Quick view</span></button>
+  <div class="t">${esc(p.title)}</div><div class="p">${esc(p.price)}</div><div class="stars" aria-label="${p.rating||5} out of 5">${stars(p.rating)}</div><div class="btns">${buttons(p)}</div></article>`).join(''):'<div class="empty">No products match your search. Try another word or category.</div>';
+}
+function cats(){
+  const c=['All',...new Set(P.map(p=>p.category).filter(Boolean))];
+  $('cats').innerHTML=c.map(x=>`<button class="${x===S.cat?'on':''}" data-c="${esc(x)}">${esc(x)}</button>`).join('');
+}
+function init(){cats();render()}
+$('cats').onclick=e=>{const b=e.target.closest('button');if(b){S.cat=b.dataset.c;cats();render()}};
+$('q').oninput=e=>{S.q=e.target.value.trim().toLowerCase();render()};
+$('sort').onchange=e=>{S.sort=e.target.value;render()};
+const close=()=>$('modal').classList.remove('open');
+$('grid').onclick=e=>{const b=e.target.closest('.img');if(!b)return;const p=P.find(x=>x.id===b.dataset.id);if(!p)return;
+  $('sheet').innerHTML=`<button class="x" aria-label="Close">&times;</button><div class="img">${media(p)}${badge(p)}</div><div class="info"><h2>${esc(p.title)}</h2><div class="p">${esc(p.category)} &middot; ${esc(p.price)}</div><div class="stars">${stars(p.rating)} <span style="color:var(--mut)">${p.rating||''}</span></div><p>${esc(p.description||'')}</p><div class="btns">${buttons(p)}</div></div>`;
+  $('modal').classList.add('open');$('sheet').querySelector('.x').focus()};
+$('modal').onclick=e=>{if(e.target.id==='modal'||e.target.closest('.x'))close()};
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+fetch('products.json').then(r=>r.json()).then(d=>{P=d;init()}).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load products.json</div>'});
+</script></body></html>
